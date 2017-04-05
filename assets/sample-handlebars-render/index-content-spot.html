@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <title>Handlebars Render - Content Spot Sample</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.0.6/handlebars.min.js"></script>
+    <style type="text/css">
+    body {
+        padding-top: 60px;
+        padding-bottom: 40px;
+    }
+    </style>
+    <style type="text/css">
+    .jumbotron {
+        background-position: right top;
+        background-repeat: no-repeat;
+        background-size: cover;
+    }
+    </style>
+     <script src="./wch-renderer.js"></script>
+    <script type="text/javascript">
+    new WCHRenderer({ baseTenantURL: '{Tenant API URL}'}).renderAll();
+    </script>
+</head>
+
+<body>
+    <nav class="navbar navbar-inverse navbar-fixed-top">
+        <div class="container">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar"
+                    aria-expanded="false" aria-controls="navbar">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="#">Watson Content Hub - Sample Articles With Content Spot Rendering</a>
+            </div>
+            <div id="navbar" class="navbar-collapse collapse">
+                <form class="navbar-form navbar-right">
+                    <div class="form-group">
+                        <input type="text" placeholder="Email" class="form-control">
+                    </div>
+                    <div class="form-group">
+                        <input type="password" placeholder="Password" class="form-control">
+                    </div>
+                    <button type="submit" class="btn btn-success">Sign in</button>
+                </form>
+            </div>
+            <!--/.navbar-collapse -->
+        </div>
+    </nav>
+    <div class="container">
+        <!-- Content spot - Get content item and render with banner-text-on-left.hbs -->
+        <div data-wch-content-id="b755dfdd-0fb3-40ac-8103-23a4a2bc33a7" data-wch-remote-template-name="/sample-handlebars-render/hbs-templates/content/Article/banner-text-on-left.hbs">
+        </div>
+        <!-- Content spot - Gets search results and renders with default.hbs -->
+        <div data-wch-content-search="fq=type:Article&sort=lastModified%20desc&rows=6" data-wch-remote-template-name="#default"> 
+        </div>
+        <hr>
+        <div class="container">
+            <footer>
+                <p>
+                    This page uses Handlebars with .hbs templates loaded remotely to display a content item and a list of search results from Watson Content Hub.
+                </p>
+            </footer>
+        </div>
+    </div>
+</body>
+
+</html>

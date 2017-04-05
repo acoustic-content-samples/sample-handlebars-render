@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <title>Handlebars Process Results Sample</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.0.6/handlebars.min.js"></script>
+    <style type="text/css">
+    body {
+        padding-top: 60px;
+        padding-bottom: 40px;
+    }
+    </style>
+    <style type="text/css">
+    .jumbotron {
+        background-position: right top;
+        background-repeat: no-repeat;
+        background-size: cover;
+    }
+    </style>
+    <script src="./wch-renderer.js"></script>
+    <script src="./process-results.js"></script>
+ </head>
+
+<body>
+    <nav class="navbar navbar-inverse navbar-fixed-top">
+        <div class="container">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar"
+                    aria-expanded="false" aria-controls="navbar">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="#">Handlebars Rendering - Sample of Processing Results</a>
+            </div>
+            <div id="navbar" class="navbar-collapse collapse">
+                <form class="navbar-form navbar-right">
+                    <div class="form-group">
+                        <input type="text" placeholder="Email" class="form-control">
+                    </div>
+                    <div class="form-group">
+                        <input type="password" placeholder="Password" class="form-control">
+                    </div>
+                    <button type="submit" class="btn btn-success">Sign in</button>
+                </form>
+            </div>
+            <!--/.navbar-collapse -->
+        </div>
+    </nav>
+    <div class="container">
+        <!-- Main hero unit for a primary marketing message or call to action -->
+        <!-- Get content item and render with Handlebars -->
+        <script id="contentLocationId" type="text/x-handlebars-template" data-wch-content-id="b755dfdd-0fb3-40ac-8103-23a4a2bc33a7">
+            <div class="container jumbotron" style="background-image: url({{elements.image.url}});">
+                <h1>{{elements.title.value}}</h1>
+                <p style="width: 60%;">{{elements.summary.value}}</p>
+                <p><a href="https://developer.ibm.com/wch/" target="_blank" class="btn btn-primary btn-large">Learn more &raquo;</a></p>
+                <h3>{{elements.category.value}}</h3>
+            </div>
+        </script>
+        <!-- Example row of columns -->
+        <!-- Gets search results and renders with Handlebars -->
+        <script id="searchLocationId" type="text/x-handlebars-template" data-wch-content-search="fq=type:Article&sort=lastModified%20desc&rows=6">
+            <div class="container">
+                {{#each searchResults}}
+                <div class="col-xs-12 col-sm-6 col-md-4 col-lg-4 animated" style="min-height: 390px;"
+                    data-animated="fadeInUp">
+                    <div class="build">
+                        <div class="feature-img">
+                            <img src="{{elements.image.url}}" alt="" width="360" height="225">
+                        </div>
+                        <div style="min-height:40px">
+                            <h4 style="color:#000;padding:0px 0px 5px 0px"><a>{{elements.title.value}}
+                            ({{elements.category.value}})</a></h4>
+                            <p>{{elements.summary.value}}
+                            </p>
+                        </div>
+                    </div>
+                </div>
+                {{/each}}
+            </div>
+        </script>
+        <hr>
+        <div class="container">
+            <div class="col-xs-4">
+                <button onclick="updateContentItem('contentLocationId');" class="btn btn-primary" data-toggle="modal">Update Content Item</button>
+            </div>
+            <div class="col-xs-4">
+                <button onclick="updateSearch('searchLocationId');" class="btn btn-primary" data-toggle="modal">Update Search</button>
+            </div>
+        </div>
+</body>
+
+</html>

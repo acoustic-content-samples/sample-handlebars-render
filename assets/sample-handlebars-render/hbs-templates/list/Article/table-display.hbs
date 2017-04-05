@@ -1,0 +1,25 @@
+<div class="container">
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <td>Image</td>
+                <td>Title</td>
+                <td>Summary</td>
+                <td>Author</td>
+            </tr>
+        </thead>
+        <tbody>
+            <div>
+                {{#each searchResults}}
+                <tr>
+                    <td><img style="width: 150px;" src="{{elements.image.url}}"></img>
+                    </td>
+                    <td>{{elements.title.value}}</td>
+                    <td>{{elements.summary.value}}</td>
+                    <td>{{elements.author.value}}</td>
+                </tr>
+                {{/each}}
+            </div>
+        </tbody>
+    </table>
+</div>

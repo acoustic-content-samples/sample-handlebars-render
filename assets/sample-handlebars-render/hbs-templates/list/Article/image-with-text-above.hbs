@@ -1,0 +1,16 @@
+<div class="container">
+    {{#each searchResults}}
+    <div class="col-xs-12 col-sm-6 col-md-4 col-lg-4 animated" style="min-height: 380px;" data-animated="fadeInUp">
+        <div class="build">
+            <h4 style="color:#000;padding:5px 0px 5px 0px">
+    <a>{{elements.title.value}}</a>
+    </h4>
+            <div class="feature-img">
+                <img src="{{elements.image.url}}" alt="" width="360" height="225">
+            </div>
+            <p>{{elements.summary.value}}
+            </p>
+        </div>
+    </div>
+    {{/each}}
+</div>

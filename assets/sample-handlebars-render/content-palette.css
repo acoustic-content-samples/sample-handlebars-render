@@ -1,0 +1,69 @@
+
+#pickerDialog{
+    display:none;
+    padding:0;
+}
+#pickerDialog iframe {
+    width:100%;
+    height:100%;
+    position: absolute;
+}
+
+.picker-label{
+    font-family: Arial;
+    font-size: 14px;
+}
+.picker-button{
+    background-color: #4178be;
+    border-color: #4178be;
+    border-radius: 5px;
+    color: #FFFFFF;
+    height:35px;
+    font-size: 14px;
+}
+
+#pickerContainer iframe{
+    width: 90%;
+    height: 100%;
+}
+#pickerContainer {
+    height: 500px;
+}
+
+
+
+.ui-dialog-titlebar {
+    background: #4178be;
+    font-family: "Helvetica Neue Roman for IBM", Helvetica, Arial, sans-serif;
+    font-weight: bold;
+    font-size: 18px;
+    color: #fff;
+    border-radius: none;
+}
+
+.ui-dialog .ui-button{
+    background-color: #4178be;
+    color: #fff;
+    border-color: #4178be;
+}
+.ui-dialog .ui-button .ui-icon-closethick{
+    background-image: url('./CloseWindow.svg');
+    background-position: 0;
+}
+
+.ui-dialog {
+    min-width:610px!important;
+        padding:0;
+}
+
+.ui-dialog-content.ui-widget-content{
+    overflow:hidden!important;
+}
+
+.ui-dialog-content.ui-widget-content{
+    border: none;
+    color:transparent;
+}
+.ui-dialog.ui-corner-all{
+    border-radius: 0;
+}

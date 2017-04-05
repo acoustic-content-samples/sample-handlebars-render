@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>WCH Content Display Sample</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <script>
+    var editMode = false;
+    </script>
+    <link rel="stylesheet" href="script-app.css">
+    <!-- Use your tenant server root in the following: -->
+    <script src="{Tenant Delivery URL}/sample-handlebars-render/wch-renderer.js">
+    </script>    
+    <script>
+    // Set your base tenant API URL here:
+    var baseTenantUrl = "{Tenant API URL}";
+    var wchRenderer = new WCHRenderer({ baseTenantURL: baseTenantUrl});
+    </script>
+
+    <script type="application/javascript" src="app.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.0.6/handlebars.min.js"></script>
+</head>
+
+<body class="container">
+</style>
+    [Plugin:PageMode pageMode="EDIT"]
+    <script>
+    editMode = true;
+    </script>
+    [/Plugin:PageMode]
+    <!-- START OF EDIT MODE SECTION -->
+    <div id="__SPNS__preferences-modal" class="modal fade" tabindex="-1" role="dialog" role="dialog">
+        <div class="modal-dialog" style="width: 70%;">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h4 class="modal-title">Select WCH Content</h4>
+                </div>
+                <div class="modal-body">
+                    <form>
+                        <div class="form-group row">
+                            <div class="col-xs-4">
+                                <label class="picker-label">Content Display Type</label>
+                            </div>
+                            <div class="col-xs-8">
+                                <label class="radio-inline">
+                                    <input type="radio" id="__SPNS__contentModeContentButton" onclick="__SPNS__updateFieldVisibility();" name="optradio">Single Content Item</label>
+                                <label class="radio-inline">
+                                    <input type="radio" id="__SPNS__contentModeSearchButton" onclick="__SPNS__updateFieldVisibility();" name="optradio">Search Result List</label>
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <div class="col-xs-4">
+                                <label class="picker-label">Content Type</label>
+                            </div>
+                            <div class="col-xs-8">
+                                <select class="form-control" onchange="__SPNS__handleTypeSelectChange(this);" id='__SPNS__contentTypeSelector'>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <div class="col-xs-4">
+                                <label class="picker-label">Template</label>
+                            </div>
+                            <div class="col-xs-8">
+                                <select class="form-control" id='__SPNS__templateSelector'></select>
+                            </div>
+                        </div>
+                        <div id="__SPNS__contentItemSelectorContainer" class="form-group row">
+                            <div class="col-xs-4">
+                                <label class="picker-label">Content Item</label>
+                            </div>
+                            <div class="col-xs-8">
+                                <select class="form-control" id='__SPNS__contentItemSelector'>
+                                </select>
+                            </div>
+                        </div>
+                        <div id="__SPNS__tagsInputContainer" class="form-group row">
+                            <div class="col-xs-4">
+                                <label for="searchTagsInput" class="picker-label">Optional search tag</label>
+                            </div>
+                            <div class="col-xs-8">
+                                <input type="text" class="form-control" id='__SPNS__searchTagsInput'></input>
+                            </div>
+                        </div>
+                        <div id="__SPNS__rowsInputContainer" class="form-group row">
+                            <div class="col-xs-4">
+                                <label class="picker-label">Number of results</label>
+                            </div>
+                            <div class="col-xs-8">
+                                <input type="text" value="3" class="form-control" id='__SPNS__rowsInput'>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <div class="col-xs-4">
+                            </div>
+                            <div class="col-xs-4">
+                                <button type="button" onclick="__SPNS__saveAndClose();" data-dismiss="modal" data-toggle="modal"
+                                    class="btn btn-primary" data-toggle="modal">Save</button>
+                            </div>
+                            <div class="col-xs-4">
+                                <button type="button" data-toggle="modal" data-dismiss="modal"
+                                    class="btn btn-primary" data-toggle="modal">Cancel</button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- END OF EDIT MODE SECTION -->
+    <div class="row" style="padding-top: 10px; margin-top: 0px;" id="__SPNS__wchContentResult">
+            <button type="button" onclick="__SPNS__initDialog();" class="btn btn-info btn-xs" data-toggle="modal"
+        data-target="#__SPNS__preferences-modal">Select Content from Watson Content Hub</button>
+    </div>
+</body>
+
+</html>

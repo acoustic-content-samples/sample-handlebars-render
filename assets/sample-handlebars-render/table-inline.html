@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>Table Search Sample</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.0.6/handlebars.min.js"></script>
+    <script src="./wch-renderer.js"></script>
+    <script type="text/javascript">
+    new WCHRenderer({ baseTenantURL: '{Tenant API URL}'}).renderAll();
+    </script>
+</head>
+
+<body>
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="feature title-page text-left" style="padding-bottom: 10px;">
+                    <h2 class="color-a">Watson Content Hub - Sample Table Using Handlebars</h2>
+                </div>
+                <!-- end build -->
+            </div>
+            <!-- end col -->
+        </div>
+        <div class="container">
+            <script data-wch-content-search="fq=type:Article&sort=lastModified%20desc&rows=40" type="text/x-handlebars-template">
+                <div>
+                    <table class="table table-striped">
+                        <thead>
+                            <tr>
+                                <td>Image</td>
+                                <td>Title</td>
+                                <td>Summary</td>
+                                <td>Author</td>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <div>
+                                {{#each searchResults}}
+                                <tr>
+                                    <td><img style="width: 150px;" src="{{elements.image.url}}"></img>
+                                    </td>
+                                    <td>{{elements.title.value}}</td>
+                                    <td>{{elements.summary.value}}</td>
+                                    <td>{{elements.author.value}}</td>
+                                </tr>
+                                {{/each}}
+                            </div>
+                        </tbody>
+                    </table>
+                </div>
+            </script>
+        </div>
+    </div>
+</body>
+
+</html>

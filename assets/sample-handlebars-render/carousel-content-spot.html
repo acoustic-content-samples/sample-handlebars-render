@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>Carousel - Content Spot Sample</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.0.6/handlebars.min.js"></script>
+     <script src="./wch-renderer.js"></script>
+    <script type="text/javascript">
+    new WCHRenderer({ baseTenantURL: '{Tenant API URL}'}).renderAll();
+    </script>
+    <style>
+    .carousel-image {
+        width: 70%;
+        margin: auto;
+        max-height: 750px;
+    }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <div>
+            <h3 class="text-center">Watson Content Hub - Sample Carousel Content Spot</h3>
+        </div>
+        <br>
+        <div data-wch-content-search="fq=type:Article&sort=lastModified%20desc&rows=3" data-wch-remote-template-name="/sample-handlebars-render/hbs-templates/list/Article/carousel.hbs">
+        </div>
+    </div>
+</body>
+
+</html>

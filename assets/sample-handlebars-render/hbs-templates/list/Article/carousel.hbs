@@ -1,0 +1,40 @@
+<div id="articleCarousel" class="carousel slide" data-ride="carousel">
+    <style>
+    .carousel-image {
+        width: 70%;
+        margin: auto;
+        max-height: 750px;
+    }
+    </style>
+    <!-- Wrapper for carousel slides -->
+    <div data-wch-content-search="fq=type:Article&sort=lastModified%20desc&rows=3" id="articleCarouselInner"
+        class="carousel-inner" role="listbox">
+        {{#each searchResults}}
+        <!-- active class needs to be set just for first value -->
+        {{#if @first}}
+        <div class="item active">
+            {{else}}
+            <div class="item">
+                {{/if}}
+                <img class="carousel-image" src="{{elements.image.url}}" width="460" height="345">
+                <div class="carousel-caption">
+                    <h1>{{elements.title.value}}</h1>
+                    <p>{{elements.summary.value}}</p>
+                    <h4>{{elements.author.value}}</h5>
+                  </div>
+                </div>
+              {{/each}}
+
+            </div>
+            <!-- Left and right controls -->
+            <a class="left carousel-control" href="#articleCarousel" role="button" data-slide="prev">
+                <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
+                <span class="sr-only">Previous</span>
+            </a>
+            <a class="right carousel-control" href="#articleCarousel" role="button" data-slide="next">
+                <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
+                <span class="sr-only">Next</span>
+            </a>
+        </div>
+    </div>
+</div>

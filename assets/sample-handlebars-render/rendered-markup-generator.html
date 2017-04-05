@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Rendered Markup Generator</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
+    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.min.js"></script>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.0.6/handlebars.min.js"></script>
+    <script src="./wch-renderer.js"></script>
+    <script type="application/javascript" src="snippet-generator.js"></script>
+    <script>
+    // Result handler for generating markup instead of <div> snippet
+    function generateHtmlResultHandler(e) {
+        $('#pickerDialog').dialog('close');
+
+        var result = JSON.parse(e.data);
+        // generate the HTML and put it in snippet section
+        var id = result.id.replace("content:", "");
+        selectedContentId = id;
+        templateSelector.value = "#default";
+        wchRenderer.renderItem(id, templateSelector.value, 'result');
+        populateTemplatePicker(result['document'].type, "content");
+        setRenderedMarkup(id, templateSelector.value);
+    }
+
+    // Generate the rendered markup and populate renderedHtml with it
+    function setRenderedMarkup(id, selectedTemplate) {
+        // hide the codeSnippet temporarily, escape the HTML, then show it again
+        // Better approach would be to refactor wch-renderer so it could return generated markup
+        renderedHtml.style.display = 'none';
+        var targetNode = document.getElementById('renderedHtml');
+
+        wchRenderer.renderContentWithTemplate(selectedContentId,
+            selectedTemplate, targetNode).
+        then(result => {
+            var rendered = $('#renderedHtml').html();
+            var escapedRendered = escapeHtml(rendered);
+            $('#renderedHtml').html(escapedRendered);
+            renderedHtml.style.display = 'block';
+        });
+    }
+
+    function handleSelectChangeForGenerateHtml(select) {
+        wchRenderer.renderItem(selectedContentId, select.value, 'result');
+        setRenderedMarkup(selectedContentId, select.value);
+    }
+    </script>
+    <link rel="stylesheet" href="https://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+    <link rel="stylesheet" href="content-palette.css" />
+</head>
+
+<body class="container">
+    <div class="row">
+        <h3>Rendered Markup Generator</h3>
+    </div>
+    <div class="row">
+        <button id="mypicker" class="picker-button" onclick="wchLogin(generateHtmlResultHandler, 'https://www.digitalexperience.ibm.com/content-picker/picker.html?fq=classification:content&fq=status:ready', templateSelector.value);">Launch Palette</button>
+        &nbsp;&nbsp;
+        <label for="templateSelector" class="picker-label">Template</label>
+        <script>
+        </script>
+        <select id='templateSelector' onchange="handleSelectChangeForGenerateHtml(this);">
+            <option value="#default">Default</option>
+        </select>
+        <div id="pickerDialog">
+            <iframe tabindex="0" id="pickerIframe"></iframe>
+        </div>
+    </div>
+    <div class="row" style="padding-top: 20px; margin-top: 10px; border-style: ridge;"
+        id="result">Your selection will appear here</div>
+    <div class="row">
+        <h4b>Rendered Markup</h4>
+            <pre id="renderedHtml"></pre>
+    </div>
+    </div>
+</body>
+
+</html>

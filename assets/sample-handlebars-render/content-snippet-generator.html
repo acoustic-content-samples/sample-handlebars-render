@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Templated Content Snippet Generator</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
+    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.min.js"></script>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.0.6/handlebars.min.js"></script>
+    <script src="./wch-renderer.js"></script>
+    <script type="application/javascript" src="snippet-generator.js"></script>
+    <link rel="stylesheet" href="https://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+    <link rel="stylesheet" href="content-palette.css" />
+</head>
+
+<body class="container">
+    <div class="row">
+        <h3>Templated Content Snippet Generator</h3>
+    </div>
+    <div class="row">
+        <!--
+      <label for="assetTypeSelector" class="picker-label">Type</label>
+      <select id='assetTypeSelector'>
+        <option value="https://www.digitalexperience.ibm.com/content-picker/picker.html?fq=classification:content&fq=status:ready">All Ready Content</option>
+         
+      </select>
+      <p>
+      -->
+        <button id="mypicker" class="picker-button" onclick="wchLogin(resultHandler, 'https://www.digitalexperience.ibm.com/content-picker/picker.html?fq=classification:content&fq=status:ready', templateSelector.value);">Launch Palette</button>
+        &nbsp;&nbsp;<label for="templateSelector" class="picker-label">Template</label>
+        <script>
+        </script>
+        <select id='templateSelector' onchange="handleSelectChange(this);">
+            <option value="#default">Default</option>
+        </select>
+        <div id="pickerDialog">
+            <iframe tabindex="0" id="pickerIframe"></iframe>
+        </div>
+    </div>
+    <div class="row" style="padding-top: 20px; margin-top: 10px; border-style: ridge;" id="result">Your selection will appear here</div>
+    <div class="row">
+        <h4>Snippet</h4>
+        <pre id="code-snippet"></pre>
+    </div>
+    </div>
+</body>
+
+</html>

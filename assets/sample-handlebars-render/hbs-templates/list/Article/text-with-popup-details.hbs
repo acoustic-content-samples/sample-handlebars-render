@@ -1,0 +1,37 @@
+<div class="row">
+    {{#each searchResults}}
+    <div class="col-md-4" style="min-height: 250px;">
+        <h2>{{elements.title.value}}</h2>
+        <p>{{elements.summary.value}}</p>
+        <p><a class="btn btn-default" role="button" data-toggle="modal" data-target="#myModal{{@index}}">View details »</a></p>
+    </div>
+    <!-- Modal -->
+    <div id="myModal{{@index}}" class="modal fade" role="dialog">
+        <div class="modal-dialog">
+            <!-- Modal content-->
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                    <h4 class="modal-title">{{elements.title.value}}</h4>
+                </div>
+                <div class="modal-body">
+                    <div class="animated" data-animated="fadeInUp">
+                        <div class="build">
+                            <div class="feature-img">
+                                <img src="{{elements.image.url}}" alt="" width="360" height="225">
+                            </div>
+                            <h4 style="color:#000;padding:25px 0px 5px 0px">Author: {{elements.author.value}}
+        </h4>
+                            <p>{{elements.body.value}}
+                            </p>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    {{/each}}
+</div>
