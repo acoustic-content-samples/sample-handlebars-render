@@ -13,6 +13,7 @@ For either approach, you can access either a single content item, specified by c
 
 This project also includes:
 - Two "snippet generators" for generating content spots, for single content item and for search.
+- A simple Express server and HTML page for previewing Handlebars template files locally.
 - A Digital Experience Script Application that is configurable for rendering Content Hub content item or search results. See the readme file in the dx-script-application folder for more information.
  
 ## Enabling in-line Handlebars support for an HTML page
@@ -158,26 +159,28 @@ For this scenario you will need to enable CORS support for your tenant. To contr
 You can do this right from the file system in Firefox, Chrome, or Safari browsers. 
 
 Sample test pages:
-+ index-inline.html: 
-+ index-content-spot.html:
-+ carousel-inline.html
-+ carousel-content-spot.html
-+ table-inline.html
-+ content-snippet-generator.html
-+ search-snippet-generator.html
-+ template-preview.html
-+ process-results.html
+
++ index-inline.html: This shows how you can use in-line Handlebars syntax to include dynamic content or search results from WCH.
++ index-content-spot.html: This shows a similar example to the previous, but in this case it uses "content spots" with Handlebars templates that are stored in WCH.
++ carousel-inline.html: This shows a simple carousel that displays search results using the in-line Handlebars functionality.
++ carousel-content-spot.html: This shows a similar carousel to be previous, with a remote template stored in WCH.
++ table-inline.html: This shows an HTML table showing search results using the in-line templating functionality.
++ content-snippet-generator.html: This lets you use the WCH content palette to select a content item and generate a snippet of HTML that lets you insert live content into any HTML page.
++ search-snippet-generator.html: This generates a snippet of HTML for showing search results that are rendered with a template.
++ template-preview.html: This page is used for previewing and testing Handlebars templates from the local file system. It must be using with the Express server described below.
++ process-results.html: This shows how you can specify a function to do additional processing of content before it is used with Handlebars rendering.
 
 ## Previewing and testing templates locally with Express server
 
-For the remote template feature (using the data-wch-remote-template-name attribute), there is a simple Express server you can use that loads templates from the local assets/sample-handlebars-render/hbs-templates folder.
+For previewing and testing the remote template feature (using the data-wch-remote-template-name attribute), there is a simple Express server you can use that loads templates from the local assets/sample-handlebars-render/hbs-templates folder.
 
-To use this server...
-
+To use this server:
 1. Run npm install from the root project folder
 2. Run node main.js to start the Express server
 
-#### Using template-preview page for testing local templates
+#### Using template-preview page for preview and test of local templates
 
-#### Using local templates with other sample pages
+The page template-preview.html can be used to preview template files from the local file system. To use this, you need to run the Express server as described above. Then open template-preview.html using localhost and the port of the Express server. The URL is shown in the console when you run the server.
+
+From template-preview.html you can select any of the templates you have under the hbs-templates folder without having to push them to the WCH server first. It's a convenient way to make iterative changes to templates and view the results.
 
