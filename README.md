@@ -129,6 +129,7 @@ These files have values that need to be updated for your tenant:
 - index-inline.html
 - snippet-generator.js
 - table-inline.html
+- template-preview.html
 
 Replace the values for {Tenant API URL} and {Tenant Delivery URL} with the values from the "Watson Content Hub Information" dialog.
 
@@ -156,4 +157,27 @@ For this scenario you will need to enable CORS support for your tenant. To contr
 
 You can do this right from the file system in Firefox, Chrome, or Safari browsers. 
 
+Sample test pages:
++ index-inline.html: 
++ index-content-spot.html:
++ carousel-inline.html
++ carousel-content-spot.html
++ table-inline.html
++ content-snippet-generator.html
++ search-snippet-generator.html
++ template-preview.html
++ process-results.html
+
+## Previewing and testing templates locally with Express server
+
+For the remote template feature (using the data-wch-remote-template-name attribute), there is a simple Express server you can use that loads templates from the local assets/sample-handlebars-render/hbs-templates folder.
+
+To use this server...
+
+1. Run npm install from the root project folder
+2. Run node main.js to start the Express server
+
+#### Using template-preview page for testing local templates
+
+#### Using local templates with other sample pages
 

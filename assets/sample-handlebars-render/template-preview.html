@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>WCH Handlebars Template Preview</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <script src="wch-renderer.js"></script>
+    <script type="application/javascript" src="template-preview.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.0.6/handlebars.min.js"></script>
+</head>
+
+<body class="container">
+    <div class="row">
+        <h3 class="text-center">WCH Handlebars Template Preview</h3>
+        <hr>
+    </div>
+    <div>
+        <form>
+            <div class="form-group row">
+                <div class="col-xs-4">
+                    <label class="picker-label">Template Location</label>
+                </div>
+                <div class="col-xs-8">
+                    <label class="radio-inline">
+                        <input type="radio" id="templateLocationLocalButton" onclick="updateFieldVisibility();"
+                            name="locationradio">Use Local Templates From File System</label>
+                    <label class="radio-inline">
+                        <input type="radio" id="templateLocationRemoteButton" onclick="updateFieldVisibility();"
+                            name="locationradio">Use Remote Templates Stored in Content Hub</label>
+                </div>
+            </div>
+            <div class="form-group row">
+                <div class="col-xs-4">
+                    <label class="picker-label">Content Display Type</label>
+                </div>
+                <div class="col-xs-8">
+                    <label class="radio-inline">
+                        <input type="radio" id="contentModeContentButton" onclick="updateFieldVisibility();"
+                            name="optradio">Single Content Item</label>
+                    <label class="radio-inline">
+                        <input type="radio" id="contentModeSearchButton" onclick="updateFieldVisibility();"
+                            name="optradio">Search Result List</label>
+                </div>
+            </div>
+            <div class="form-group row">
+                <div class="col-xs-4">
+                    <label class="picker-label">Content Type</label>
+                </div>
+                <div class="col-xs-8">
+                    <select class="form-control" onchange="handleTypeSelectChange(this);" id='contentTypeSelector'>
+                    </select>
+                </div>
+            </div>
+            <div class="form-group row">
+                <div class="col-xs-4">
+                    <label class="picker-label">Template</label>
+                </div>
+                <div class="col-xs-8">
+                    <select class="form-control" id='templateSelector' onchange="renderSelectedContent();"></select>
+                </div>
+            </div>
+            <div id="contentItemSelectorContainer" class="form-group row">
+                <div class="col-xs-4">
+                    <label class="picker-label">Content Item</label>
+                </div>
+                <div class="col-xs-8">
+                    <select class="form-control" id='contentItemSelector' onchange="renderSelectedContent();">
+                    </select>
+                </div>
+            </div>
+            <div id="tagsInputContainer" class="form-group row">
+                <div class="col-xs-4">
+                    <label for="searchTagsInput" class="picker-label">Optional search tag</label>
+                </div>
+                <div class="col-xs-8">
+                    <input type="text" class="form-control" id='searchTagsInput'></input>
+                </div>
+            </div>
+            <div id="rowsInputContainer" class="form-group row">
+                <div class="col-xs-4">
+                    <label class="picker-label">Number of results</label>
+                </div>
+                <div class="col-xs-8">
+                    <input type="text" value="3" class="form-control" id='rowsInput'>
+                    </select>
+                </div>
+            </div>
+            <div class="form-group row">
+                <div class="col-xs-4">
+                </div>
+                <div class="col-xs-4">
+                    <button type="button" onclick="renderSelectedContent();" class="btn btn-primary" data-toggle="modal">Update Preview</button>
+                </div>
+            </div>        </form>
+        <div class="row" style="padding-top: 20px; margin-top: 10px; border-style: ridge;"
+            id="result">Your selection will appear here</div>
+    </div>
+</body>

@@ -1,0 +1,12 @@
+{
+  "name": "sample-handlebars-render",
+  "version": "1.0.0",
+  "description": "Samples of client-side Handlebars rendering for Watson Content Hub.",
+  "main": "main.js",
+  "author": "",
+  "license": "Apache-2.0",
+  "dependencies": {
+    "express": "^4.14.0",
+    "request": "^2.79.0"
+  }
+}

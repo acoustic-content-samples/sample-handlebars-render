@@ -115,7 +115,7 @@ function getTemplateList() {
     then(JSON.parse).
     then(result => {
         var documents = result.documents;
-        console.log("Delivery search response: " + JSON.stringify(documents, null, 4));
+        // console.log("Delivery search response: " + JSON.stringify(documents, null, 4));
         availableTemplates = [];
         for (var i = 0; i < documents.length; i++) {
             if (availableTemplates.indexOf(documents[i].path) < 0) {
@@ -129,9 +129,11 @@ function getTemplateList() {
 function populateTemplatePicker(contentType, contentOrList) {
     var filter = templateFolder + "/" + contentOrList + "/" + contentType + "/";
     var options = '<option value="#default">Default</option>';
+    var numAvailableTemplates = 0;
     for (var i = 0; i < availableTemplates.length; i++) {
         var template = availableTemplates[i];
         if (template.startsWith(filter)) {
+            numAvailableTemplates++;
             var shortName = template.replace(filter, "");
             if (shortName != defaultTemplateName) {
                 options = options + '<option value="' + template + '">' + shortName + '</option>';
@@ -139,6 +141,7 @@ function populateTemplatePicker(contentType, contentOrList) {
         }
     }
     $('#templateSelector').html(options);
+    return numAvailableTemplates;
 }
 
 var availableListTypes = [];
@@ -158,13 +161,13 @@ function initTypeSelector() {
                 var typeName = remainingPath.substring(0, idx);
                 if (availableListTypes.indexOf(typeName) < 0) {
                     availableListTypes.push(typeName);
-                    console.log('typeName', typeName);
+                    // console.log('typeName', typeName);
                     options = options + '<option value="' + typeName + '">' + typeName + '</option>';
 
                 }
             }
         }
-        console.log('options', options);
+        // console.log('options', options);
         $('#contentTypeSelector').html(options);
 
     });
@@ -179,7 +182,7 @@ function handleTemplateSelectChange(select) {
 }
 
 function generateSearchSnippet() {
-    console.log("generateSearchSnippet");
+    // console.log("generateSearchSnippet");
 
 
     var searchParams = "fq=type:" + contentTypeSelector.value + "&sort=lastModified%20desc&rows=" + rowsInput.value;
@@ -194,7 +197,7 @@ function generateSearchSnippet() {
         searchParams = searchParams + "&fq=tags:(" + tags.join(' OR ') + ')';
     }
     // add tags to search: &fq=tags:(beach OR summer)
-    console.log('searchParams ', searchParams);
+    // console.log('searchParams ', searchParams);
     wchRenderer.renderSearch(searchParams, templateSelector.value, 'result');
     // wchRenderTemplatedSearch(baseTenantUrl, searchParams, templateSelector.value, 'result');
     $('#code-snippet').html(escapeHtml(makeSearchSnippet(searchParams, templateSelector.value)));
@@ -209,9 +212,14 @@ function resultHandler(e) {
     var id = result.id.replace("content:", "");
     selectedContentId = id;
     templateSelector.value = "#default";
-    wchRenderer.renderItem(id, templateSelector.value, 'result');
+    var numAvailableTemplates = populateTemplatePicker(result['document'].type, "content");
+    if (numAvailableTemplates > 0) {
+        wchRenderer.renderItem(id, templateSelector.value, 'result');
+    }
+    else {
+        $('#result').html('No templates available for selected content');
+    }
 
-    populateTemplatePicker(result['document'].type, "content");
     $('#code-snippet').html(escapeHtml(makeSnippet(id, templateSelector.value)));
 }
 
