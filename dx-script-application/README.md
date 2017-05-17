@@ -18,3 +18,9 @@ Note that the Handlebars library used for rendering can conflict with Dojo, so f
 
 The available templates are in the hbs-templates folder of that project. There are currently templates provided for "Article" content type. You can add templates for other content types as described in the main readme for this project.
 
+This screenshot shows a Portal page with two instances of this application. The top instance shows a single "Hero Banner" content item and the bottom instance shows a search for articles.
+![Alt text](../docs/dx-script-app.jpg?raw=true "Sample screenshot")
+
+This shows the configuration UI for selecting content item or search parameters.
+![Alt text](../docs/dx-script-app-configuration.jpg?raw=true "Sample configuration screenshot")
+
