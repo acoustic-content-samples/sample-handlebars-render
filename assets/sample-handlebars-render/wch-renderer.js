@@ -275,6 +275,7 @@ class WCHRenderer {
     renderContentItem(targetNode, contentItem, template) {
         var compiledTemplate = Handlebars.compile(template);
         this.fixContentUrls(contentItem);
+        let renderer = this;
         if (this.contentResultsProcessor) {
             contentItem = renderer.contentResultsProcessor(contentItem);
         }
