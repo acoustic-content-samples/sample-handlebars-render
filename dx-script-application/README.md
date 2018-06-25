@@ -2,6 +2,8 @@
 
 This is a sample script application for IBM Digital Experience (DX) 8.5 or 9.0. It lets you display a content item or search results for a selected content type on a DX page. To render the content it uses Handlebars templates that are stored in WCH.
 
+### NOTE: For rendering WCH content in DX, you should now use the following sample instead: https://github.com/digexp/sample-wch-handlebars-render
+
 To install into DX 8.5/9.0:
 - The rendering and template support used by this app are from the containing sample-handlebars-render project. You mush first install that into your WCH tenant before using this script application.
 - You will need to have Script Application command line "sp" installed as described in the Script Application documentation.
