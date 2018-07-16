@@ -139,7 +139,6 @@ class WCHRenderer {
         return new Promise((resolve, reject) => {
             const req = new XMLHttpRequest();
             req.onload = resolve;
-            req.withCredentials = true;
             req.onerror = function(err) {
                 reject("Network Error");
             };
@@ -234,7 +233,6 @@ class WCHRenderer {
         return new Promise((resolve, reject) => {
             const req = new XMLHttpRequest();
             req.onload = resolve;
-            req.withCredentials = true;
             req.onerror = function(err) {
                 reject("Network Error");
             };
@@ -254,7 +252,6 @@ class WCHRenderer {
         return new Promise((resolve, reject) => {
             const req = new XMLHttpRequest();
             req.onload = resolve;
-            req.withCredentials = true;
             req.onerror = function(err) {
                 reject("Network Error");
             };
