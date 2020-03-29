@@ -14,7 +14,6 @@ For either approach, you can access either a single content item, specified by c
 This project also includes:
 - Two "snippet generators" for generating content spots, for single content item and for search.
 - A simple Express server and HTML page for previewing Handlebars template files locally.
-- A Digital Experience Script Application that is configurable for rendering Content Hub content item or search results. See the readme file in the dx-script-application folder for more information.
  
 ## Enabling in-line Handlebars support for an HTML page
 
