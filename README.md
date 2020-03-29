@@ -1,9 +1,9 @@
 # sample-handlebars-render
-Helper code for automatic client-side template rendering of content items and search results using Handlebars. Also includes "snippet generators" and a configurable Script Application for Digital Experience. 
+Helper code for automatic client-side template rendering of content items and search results from Acoustic Content using Handlebars. 
 
 ## Introduction
 
-This library supports two ways of using Handlebars rendering with WCH content and search results:
+This library supports two ways of using Handlebars rendering with content and search results from Acoustic Content (formerly Watson Content Hub or WCH):
 
 1. You can enable inline Handlebars references in any HTML page, to easily convert static text and image references to dynamic content from WCH.
 
