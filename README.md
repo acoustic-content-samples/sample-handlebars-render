@@ -31,7 +31,7 @@ To make that banner use dynamic content from Content Hub, add the data-wch-conte
             <div class="container jumbotron" style="background-image: url({{elements.image.url}});">
                 <h1>{{elements.title.value}}</h1>
                 <p style="width: 60%;">{{elements.summary.value}}</p>
-                <p><a href="https://developer.ibm.com/wch/" target="_blank" class="btn btn-primary btn-large">Learn more &raquo;</a></p>
+                <p><a href="https://developer.goacoustic.com/acoustic-content/docs" target="_blank" class="btn btn-primary btn-large">Learn more &raquo;</a></p>
             </div>
         </script>
 
