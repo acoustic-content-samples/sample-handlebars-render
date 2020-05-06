@@ -86,10 +86,7 @@ The two examples above can be seen in the file index-content-spot.html.
 
 To use this rendering support in an HTML page, you need to initialize the helper library and call one function to render content when the page is loaded. Here are the steps:
 
-1. Include the helper JS, wch-renderer.js, with a script tag in your HTML. You can host the helper file yourself, or for easy prototyping you can reference a hosted copy like this:
-
-        <script src="http://samples.watsoncontenthub.io/sample-handlebars-render/wch-renderer.js">
-        </script>
+1. Include the helper JS, wch-renderer.js, with a script tag in your HTML. 
 
 2. Add a script tag to initialize the helper and enable rendering. Specify your base tenant URL like this:
 
