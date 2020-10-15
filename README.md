@@ -91,7 +91,7 @@ To use this rendering support in an HTML page, you need to initialize the helper
 2. Add a script tag to initialize the helper and enable rendering. Specify your base tenant URL like this:
 
         <script type="text/javascript">
-        new WCHRenderer({ baseTenantURL: 'https://my12.digitalexperience.ibm.com/api/12345678-9abc-def0-1234-56789abcdef0'}).renderAll();
+        new WCHRenderer({ baseTenantURL: 'https://content-eu-4.content-cms.com/api/12345678-9abc-def0-1234-56789abcdef0'}).renderAll();
         </script>
     
 ## Creating templates for dynamic content spots
